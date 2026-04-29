@@ -1,4 +1,4 @@
-# Bài thực hành số 1
+# Bài thực hành số 2
 ## I. Thông tin cá nhân
 **Họ và tên:** Võ Sỹ Ngọc
 
