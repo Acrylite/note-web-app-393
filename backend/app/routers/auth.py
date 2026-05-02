@@ -7,9 +7,9 @@ from firebase_admin import auth as admin_auth
 
 from dotenv import load_dotenv
 
-from backend.schemas.auth import GoogleLoginRequest
-from backend.core.firebase_config import init_firebase_admin
-from backend.dependencies.auth import get_current_user
+from backend.app.schemas.auth import GoogleLoginRequest
+from backend.app.core.firebase_config import init_firebase_admin
+from backend.app.dependencies.auth import get_current_user
 
 # shortcut
 router = APIRouter(prefix="/auth", tags=["auth"])
