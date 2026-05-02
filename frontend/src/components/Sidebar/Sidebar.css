@@ -1,0 +1,51 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 260px;
+  height: 100%;
+  background: var(--color-background-primary);
+  border-left: 0.5px solid var(--color-border-tertiary);
+  z-index: 100;
+  padding: 20px;
+  transition: right 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar.open { right: 0; }
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 99;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-background-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.sidebar-link {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  text-align: left;
+  background: none;
+  border: none;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.sidebar-link.logout { color: #A32D2D; }

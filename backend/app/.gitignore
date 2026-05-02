@@ -1,0 +1,8 @@
+# Virtual environment on backend
+.venv
+
+# Libraries
+node_modules
+
+# Environmental variables on both side
+.env

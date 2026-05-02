@@ -1,0 +1,44 @@
+:root {
+  color-scheme: light;
+
+  /* backgrounds */
+  --bg-base:        #F2F0EC;   /* warm off-white, not harsh */
+  --bg-surface:     #ECEAE4;   /* cards, panels */
+  --bg-elevated:    #E6E3DC;   /* hover states */
+
+  /* blob colours — muted, semi-transparent */
+  --blob-1:         rgba(180, 174, 220, 0.55);   /* soft purple */
+  --blob-2:         rgba(120, 195, 168, 0.45);   /* soft teal */
+  --blob-3:         rgba(230, 195, 130, 0.40);   /* soft amber */
+
+  /* bubble outline */
+  --bubble-stroke:  rgba(160, 155, 140, 0.25);   /* subtle warm grey */
+
+  /* text */
+  --text-primary:   #1A1916;
+  --text-secondary: #4A4740;
+  --text-tertiary:  #8A8680;
+
+  /* borders */
+  --border:         rgba(0, 0, 0, 0.08);
+}
+
+:root.dark {
+  color-scheme: dark;
+
+  --bg-base:        #1A1916;   /* warm near-black */
+  --bg-surface:     #222018;
+  --bg-elevated:    #2A2820;
+
+  --blob-1:         rgba(90, 84, 160, 0.45);
+  --blob-2:         rgba(30, 110, 82, 0.40);
+  --blob-3:         rgba(160, 120, 40, 0.35);
+
+  --bubble-stroke:  rgba(255, 255, 255, 0.07);
+
+  --text-primary:   #EDEAE4;
+  --text-secondary: #A8A49C;
+  --text-tertiary:  #6A6660;
+
+  --border:         rgba(255, 255, 255, 0.07);
+}
