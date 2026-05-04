@@ -1,0 +1,73 @@
+.filter-bar {
+    width: 100%;
+    background: var(--bg-surface);
+    border-bottom: 0.5px solid var(--border);
+}
+
+.filter-bar-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    box-sizing: border-box;
+}
+
+.filter-groups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.fg-label {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+.fg-opts {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.filter-chip {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 10px;
+    border: 0.5px solid var(--border);
+    cursor: pointer;
+    color: var(--text-secondary);
+    background: var(--bg-elevated);
+    user-select: none;
+}
+
+.filter-chip:hover {
+    border-color: var(--text-tertiary);
+}
+
+.filter-chip.active {
+    background: #E6F1FB;
+    border-color: #85B7EB;
+    color: #0C447C;
+}
+
+.filter-chip.todo-only {
+    background: #FAEEDA;
+    border-color: #FAC775;
+    color: #633806;
+}
+
+.filter-chip.todo-only.active {
+    background: #BA7517;
+    border-color: #BA7517;
+    color: #FAEEDA;
+}

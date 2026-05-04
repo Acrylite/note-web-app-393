@@ -13,8 +13,8 @@ async def create(uid: str, payload: TodoCreate):
 
 async def update(uid: str, todo_id: str, payload: TodoUpdate):
     data = payload.model_dump(exclude_none=True)
-    if "lines" in data and payload.lines is not None:
-        data["lines"] = [line.model_dump() for line in payload.lines]
+    if "lines" in data:
+        data["lines"] = [dict(line) for line in data["lines"]]
     return db.update_doc(uid, COLLECTION, todo_id, data)
 
 async def delete(uid: str, todo_id: str):

@@ -3,8 +3,12 @@ import Background from '../components/Background/Background'
 import Navbar from '../components/NavigationBar/Navbar'
 import Toolbar from '../components/Toolbar/Toolbar'
 import AddItem from '../components/AddItem/AddItem'
-import NotesPanel from '../components/NotesPanel'
-import TodoPanel from '../components/TodoPanel'
+import NotesPanel from '../components/NotesPanel/NotesPanel'
+import TodoPanel from '../components/TodoPanel/TodoPanel'
+import '../components/NavigationBar/Navbar.css'
+import '../components/Toolbar/Toolbar.css'
+import '../components/NotesPanel/NotesPanel.css'
+import '../components/TodoPanel/TodoPanel.css'
 import './HomePage.css'
 
 function HomePage() {
@@ -20,7 +24,8 @@ function HomePage() {
 
     const openEditForm = (item) => {
         setEditingItem(item)
-        setDefaultType(item.type)
+        const detectedType = item.deadline ? 'todo' : 'note'
+        setDefaultType(detectedType)
         setFormOpen(true)
     }
 
@@ -30,27 +35,25 @@ function HomePage() {
     }
     return (
         <div className="home-page">
-
             <Background />
-
             <Navbar />
-
             <Toolbar onAddNote={() => openNewForm('note')} />
 
             {/* pushes panels down when open */}
-            {formOpen && (
-                <AddItemForm
-                    existingItem={editingItem}
-                    defaultType={defaultType}
-                    onClose={closeForm}
-                />
-            )}
+            <div className="home-content">
+                {formOpen && (
+                    <AddItem
+                        existingItem={editingItem}
+                        defaultType={defaultType}
+                        onClose={closeForm}
+                    />
+                )}
 
-            <div className="panels-row">
-                <NotesPanel onEdit={openEditForm} />
-                <TodoPanel onEdit={openEditForm} />
+                <div className="panels-row">
+                    <NotesPanel onEdit={openEditForm} />
+                    <TodoPanel onEdit={openEditForm} />
+                </div>
             </div>
-
         </div>
     )
 }

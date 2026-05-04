@@ -9,6 +9,8 @@ function Background() {
             <div className="bubble bubble-3" />
             <div className="bubble bubble-4" />
             <div className="bubble bubble-5" />
+            <div className="bubble bubble-6" />
+            <div className="bubble bubble-7" />
         </div>
     )
 }

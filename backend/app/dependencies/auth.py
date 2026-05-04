@@ -1,22 +1,16 @@
-# copied 1:1 from https://github.com/Khoan-IT/chatbot-page/blob/main/backend/app/dependencies/auth.py
-from fastapi import Header, HTTPException
-from firebase_admin import auth as admin_auth
-from backend.app.core.firebase_config import init_firebase_admin
+from fastapi import HTTPException, Request
+from firebase_admin import auth
 
-def get_current_user(authorization: str = Header(...)):
-    init_firebase_admin()
-
-    if not authorization.startswith("Bearer "):
-        raise HTTPException(status_code=401, detail="Invalid authorization header")
-
-    token = authorization.replace("Bearer ", "").strip()
-
+async def get_current_user(request: Request):
+    authorization = request.headers.get("Authorization")
+    
+    if not authorization or not authorization.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="Missing or invalid auth header")
+    
+    token = authorization.split("Bearer ")[1]
+    
     try:
-        decoded = admin_auth.verify_id_token(token)
-        return {
-            "uid": decoded.get("uid"),
-            "email": decoded.get("email"),
-            "token": token
-        }
-    except Exception:
-        raise HTTPException(status_code=401, detail="Invalid or expired token")
+        decoded = auth.verify_id_token(token, clock_skew_seconds=10)
+        return {"uid": decoded["uid"], "email": decoded.get("email")}
+    except Exception as e:
+        raise HTTPException(status_code=401, detail=f"Token error: {str(e)}")

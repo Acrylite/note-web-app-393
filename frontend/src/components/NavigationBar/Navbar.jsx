@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Sidebar from '../Sidebar/Sidebar'
+import logo from '../../assets/hcmus_logo.png'
 
 function Navbar() {
     const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -7,30 +8,19 @@ function Navbar() {
     return (
         <>
             <nav className="navbar">
-
-                {/* school logo */}
-                <div className="navbar-left">
-                    <div className="app-icon">
-                        {/* swap this for an actual <img> later */}
-                        icon
+                <div className="navbar-inner">
+                    <div className="navbar-left">
+                        <div className="app-icon-wrap">
+                            <img src={logo} alt="HCMUS Logo" className="login-icon-img" />
+                        </div>
+                        <span className="app-name">Personal Note Webapp</span>
                     </div>
-                    <span className="app-name">your app name</span>
+                    <button className="burger-btn" onClick={() => setSidebarOpen(true)}>
+                        <span /><span /><span />
+                    </button>
                 </div>
-
-                {/* sidebar burger menu */}
-                <button
-                    className="burger-btn"
-                    onClick={() => setSidebarOpen(true)}
-                >
-                    <span /><span /><span />
-                </button>
-
             </nav>
-
-            <Sidebar
-                isOpen={sidebarOpen}
-                onClose={() => setSidebarOpen(false)}
-            />
+            <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         </>
     )
 }

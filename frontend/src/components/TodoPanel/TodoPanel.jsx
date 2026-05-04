@@ -5,11 +5,11 @@ import { NotesContext } from '../../context/NotesContext'
 // component for to-do panel
 function TodoPanel({ onEdit }) {
     
-    const { todos, pinTodo, deleteTodo } = useContext(NotesContext)
+    const { filteredTodos, pinTodo, deleteTodo } = useContext(NotesContext)
 
     // prioritize pinned to-do notes over unpinned ones
-    const pinnedTodos = todos.filter(t => t.pinned)
-    const unpinnedTodos = todos
+    const pinnedTodos = filteredTodos.filter(t => t.pinned)
+    const unpinnedTodos = filteredTodos
         .filter(t => !t.pinned)
         .sort((a, b) => new Date(a.deadline) - new Date(b.deadline))
     const sortedTodos = [...pinnedTodos, ...unpinnedTodos]
@@ -19,7 +19,7 @@ function TodoPanel({ onEdit }) {
             {/* HEADER - track the number of to-do notes */}
             <div className="panel-header">
                 Your To-do List
-                <span className="panel-count">{todos.length}</span>
+                <span className="panel-count">{filteredTodos.length}</span>
             </div>
 
             {/* BODY - show to-do notes in a list with visible scroll bar on demand */}

@@ -3,4 +3,5 @@ uvicorn[standard]
 firebase-admin
 python-dotenv
 pydantic
+pydantic[email]
 requests

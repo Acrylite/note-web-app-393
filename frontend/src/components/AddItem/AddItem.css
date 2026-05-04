@@ -1,0 +1,238 @@
+.add-form {
+    background: var(--bg-surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 0 16px 0 16px;
+}
+
+.form-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.form-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.toggle-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toggle-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.toggle {
+    position: relative;
+    width: 38px;
+    height: 21px;
+    cursor: pointer;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.toggle-track {
+    position: absolute;
+    inset: 0;
+    background: var(--bg-elevated);
+    border: 0.5px solid var(--border);
+    border-radius: 21px;
+    transition: background 0.2s;
+}
+
+.toggle input:checked~.toggle-track {
+    background: #1D9E75;
+    border-color: #1D9E75;
+}
+
+.toggle-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 15px;
+    height: 15px;
+    background: var(--bg-surface);
+    border-radius: 50%;
+    transition: left 0.2s;
+    pointer-events: none;
+}
+
+.toggle input:checked~.toggle-thumb {
+    left: 20px;
+}
+
+.title-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.title-input:focus {
+    outline: none;
+    border-color: var(--text-tertiary);
+}
+
+.deadline-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.deadline-row label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    min-width: 60px;
+}
+
+.deadline-row input {
+    flex: 1;
+    padding: 7px 10px;
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.lines-area {
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 8px;
+    min-height: unset;
+    background: var(--bg-elevated);
+}
+
+.line-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 0;
+}
+
+.type-btn {
+    width: 22px;
+    height: 22px;
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg-surface);
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--text-secondary);
+}
+
+.line-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    color: var(--text-primary);
+    outline: none;
+}
+
+.line-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.add-line-btn {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 14px;
+}
+
+.add-line-btn:hover {
+    color: var(--text-secondary);
+}
+
+.tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.tag-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.tag-chip {
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 10px;
+    border: 0.5px solid var(--border);
+    cursor: pointer;
+    color: var(--text-secondary);
+    background: var(--bg-elevated);
+    user-select: none;
+}
+
+.tag-chip.selected {
+    background: #E1F5EE;
+    border-color: #5DCAA5;
+    color: #085041;
+}
+
+.form-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.btn-cancel {
+    padding: 9px 20px;
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    background: none;
+    color: var(--text-secondary);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-save {
+    padding: 9px 20px;
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-save:hover {
+    background: var(--border);
+}

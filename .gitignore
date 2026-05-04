@@ -6,3 +6,4 @@ backend/app/node_modules
 
 # Environmental variables on both side
 .env
+.env.local

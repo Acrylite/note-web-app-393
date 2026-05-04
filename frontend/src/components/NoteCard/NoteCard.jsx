@@ -1,11 +1,14 @@
 import LineItem from "../LineItem/LineItem"
+import { useNotes } from '../../context/NotesContext'
+import './NoteCard.css'
 
 // component for each note in the Notes panel
 function NoteCard({ note, onPin, onEdit, onDelete }) {
-
+    const { editNote } = useNotes()
+    
     const handleCheckChange = (updatedLine) => {
         const updatedLines = note.lines.map(l => l.id === updatedLine.id ? updatedLine : l)
-        onEdit({ ...note, lines: updatedLines })
+        editNote({ ...note, lines: updatedLines })
     }
 
     return (

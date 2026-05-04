@@ -1,15 +1,18 @@
 import LineItem from "../LineItem/LineItem"
+import { useNotes } from '../../context/NotesContext'
+import './TodoCard.css'
 
 // component for each note in the To-do panel
 function TodoCard({ todo, onPin, onEdit, onDelete }) {
 
-    const checkLines = todo.lines.filter(l => l.type === 'check')
-    const completionCount = checkLines.filter(l => l.done).length
-    const totalCount = checkLines.length
+    if (!todo || !todo.lines) return null
+
+    const completionCount = todo.lines.filter(l => l.done).length
+    const totalCount = todo.lines.length
 
     // to-do status
     const hoursLeft = (new Date(todo.deadline) - new Date()) / 36e5
-    const allDone = checkLines.length > 0 && checkLines.every(l => l.done)
+    const allDone = todo.lines.length > 0 && todo.lines.every(l => l.done)
     const status = allDone ? 'done'
         : hoursLeft < 0 ? 'overdue'
             : hoursLeft < 24 ? 'urgent'
@@ -43,9 +46,11 @@ function TodoCard({ todo, onPin, onEdit, onDelete }) {
         done: '#97C459',
     }
 
+    const { editTodo } = useNotes()
+
     const handleCheckChange = (updatedLine) => {
         const updatedLines = todo.lines.map(l => l.id === updatedLine.id ? updatedLine : l)
-        onEdit({ ...todo, lines: updatedLines })
+        editTodo({ ...todo, lines: updatedLines })
     }
 
     return (
@@ -78,7 +83,7 @@ function TodoCard({ todo, onPin, onEdit, onDelete }) {
                 {todo.lines.map(line => (
                     <LineItem
                         key={line.id}
-                        line={line}
+                        line={{ ...line, type: 'check' }}
                         readOnly={true}
                         onChange={handleCheckChange}
                     />

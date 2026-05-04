@@ -12,7 +12,9 @@ function AddItem({ existingItem = null, defaultType = 'note', onClose }) {
     // support both adding a new note or editing an existing one
     const isEditing = existingItem !== null
     const [type, setType] = useState(
-        isEditing ? existingItem.type : defaultType
+        isEditing
+            ? (existingItem.type ?? defaultType)
+            : defaultType
     )
 
     const [title, setTitle] = useState(existingItem?.title ?? '')
@@ -61,7 +63,13 @@ function AddItem({ existingItem = null, defaultType = 'note', onClose }) {
         if (!title.trim()) return
         if (type === 'todo' && !deadline) return
 
-        const payload = { title: title.trim(), tags, lines }
+        const payload = {
+            title: title.trim(),
+            tags,
+            lines: type === 'todo'
+                ? lines.map(l => ({ ...l, type: 'check' }))
+                : lines
+        }
 
         if (isEditing) {
             type === 'note'
@@ -77,8 +85,8 @@ function AddItem({ existingItem = null, defaultType = 'note', onClose }) {
     }
 
     const formTitle = isEditing
-        ? `edit ${type}`
-        : `new ${type}`
+        ? `Edit ${type}`
+        : `New ${type}`
 
     return (
         <div className="add-form">
@@ -124,20 +132,6 @@ function AddItem({ existingItem = null, defaultType = 'note', onClose }) {
                 </div>
             )}
 
-            {/* note tags */}
-            <div className="tags-row">
-                <span className="tag-label">tag:</span>
-                {taglist.map(tag => (
-                    <div
-                        key={tag}
-                        className={`tag-chip ${tags.includes(tag) ? 'selected' : ''}`}
-                        onClick={() => toggleTag(tag)}
-                    >
-                        {tag}
-                    </div>
-                ))}
-            </div>
-
             {/* note content */}
             <div className="lines-area">
                 {lines.map(line => (
@@ -152,6 +146,20 @@ function AddItem({ existingItem = null, defaultType = 'note', onClose }) {
                 ))}
             </div>
             <button className="add-line-btn" onClick={addLine}>+ Add another line</button>
+
+            {/* note tags */}
+            <div className="tags-row">
+                <span className="tag-label">Tag:</span>
+                {taglist.map(tag => (
+                    <div
+                        key={tag}
+                        className={`tag-chip ${tags.includes(tag) ? 'selected' : ''}`}
+                        onClick={() => toggleTag(tag)}
+                    >
+                        {tag}
+                    </div>
+                ))}
+            </div>
 
             {/* FOOTER - form actions */}
             <div className="form-actions">

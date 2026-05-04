@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import Background from '../components/Background/Background'
+import logo from '../assets/hcmus_logo.png'
 import './LoginPage.css'
 
 function LoginPage() {
@@ -83,16 +84,19 @@ function LoginPage() {
             <div className="login-page">
                 <div className="login-card">
 
-                    {/* APP ICON + NAME */}
+                    {/* app icon and name */}
                     <div className="login-header">
-                        <div className="login-icon">icon</div>
-                        <h1 className="login-title">your app name</h1>
+                        
+                        <div className="login-icon-wrap">
+                            <img src={logo} alt="HCMUS Logo" className="login-icon-img" />
+                        </div>
+                        <h1 className="login-title">Personal Note Webapp</h1>
                         <p className="login-subtitle">
                             {isSignup ? 'Create an account' : 'Welcome back'}
                         </p>
                     </div>
 
-                    {/* FIELDS */}
+                    {/* login fields input */}
                     <div className="login-fields">
                         <input
                             type="email"
@@ -125,12 +129,11 @@ function LoginPage() {
                         )}
                     </div>
 
-                    {/* ERROR */}
                     {error && (
                         <p className="login-error">{error}</p>
                     )}
 
-                    {/* BUTTONS */}
+                    {/* login buttons */}
                     <div className="login-actions">
                         <button
                             className="btn-primary"
@@ -155,7 +158,7 @@ function LoginPage() {
                         </button>
                     </div>
 
-                    {/* TOGGLE LOGIN / SIGNUP */}
+                    {/* switch between login and sign up */}
                     {!loading && (
                         <p className="login-toggle">
                             {isSignup ? 'Already have an account? ' : 'Need an account? '}

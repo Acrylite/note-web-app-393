@@ -1,16 +1,14 @@
 from firebase_admin import firestore
 from datetime import datetime, timezone
 
-db = firestore.client()
+def get_db():
+    return firestore.client()
 
 def now_iso():
     return datetime.now(timezone.utc).isoformat()
 
 def get_collection(uid: str, collection: str):
-    # collection structure
-    # users/{uid}/notes/{note_id}
-    # users/{uid}/todos/{todo_id}
-    return db.collection("users").document(uid).collection(collection)
+    return get_db().collection("users").document(uid).collection(collection)
 
 def get_all_docs(uid: str, collection: str):
     docs = get_collection(uid, collection).stream()

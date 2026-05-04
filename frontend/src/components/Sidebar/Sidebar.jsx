@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import './Sidebar.css'
 
 function Sidebar({ isOpen, onClose }) {
     const { user, logout, theme, toggleTheme } = useContext(AuthContext)

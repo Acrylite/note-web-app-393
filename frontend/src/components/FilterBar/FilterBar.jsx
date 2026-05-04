@@ -30,52 +30,54 @@ function FilterBar() {
 
     return (
         <div className="filter-bar">
-            <div className="filter-groups">
-                {/* sort notes */}
-                <div className="filter-group">
-                    <span className="fg-label">Sort by</span>
-                    <div className="fg-opts">
-                        {['created', 'edited'].map(opt => (
-                            <div
-                                key={opt}
-                                className={`filter-chip ${filters.sortBy === opt ? 'active' : ''}`}
-                                onClick={() => setSortBy(opt)}
-                            >
-                                {opt}
-                            </div>
-                        ))}
+            <div className='filter-bar-inner'>
+                <div className="filter-groups">
+                    {/* sort notes */}
+                    <div className="filter-group">
+                        <span className="fg-label">Sort by</span>
+                        <div className="fg-opts">
+                            {['created', 'edited'].map(opt => (
+                                <div
+                                    key={opt}
+                                    className={`filter-chip ${filters.sortBy === opt ? 'active' : ''}`}
+                                    onClick={() => setSortBy(opt)}
+                                >
+                                    {opt}
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
 
-                {/* filter by tags */}
-                <div className="filter-group">
-                    <span className="fg-label">Tag</span>
-                    <div className="fg-opts">
-                        {taglist.map(tag => (
-                            <div
-                                key={tag}
-                                className={`filter-chip ${filters.tags.includes(tag) ? 'active' : ''}`}
-                                onClick={() => toggleTag(tag)}
-                            >
-                                {tag}
-                            </div>
-                        ))}
+                    {/* filter by tags */}
+                    <div className="filter-group">
+                        <span className="fg-label">Tag</span>
+                        <div className="fg-opts">
+                            {taglist.map(tag => (
+                                <div
+                                    key={tag}
+                                    className={`filter-chip ${filters.tags.includes(tag) ? 'active' : ''}`}
+                                    onClick={() => toggleTag(tag)}
+                                >
+                                    {tag}
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
 
-                {/* filters only applies to to-do notes */}
-                <div className="filter-group">
-                    <span className="fg-label">Deadline</span>
-                    <div className="fg-opts">
-                        {['due', 'overdue', 'completed'].map(opt => (
-                            <div
-                                key={opt}
-                                className={`filter-chip todo-only ${filters.todoOnly === opt ? 'active' : ''}`}
-                                onClick={() => setTodoOnly(opt)}
-                            >
-                                {opt}
-                            </div>
-                        ))}
+                    {/* filters only applies to to-do notes */}
+                    <div className="filter-group">
+                        <span className="fg-label">Deadline</span>
+                        <div className="fg-opts">
+                            {['due', 'overdue', 'completed'].map(opt => (
+                                <div
+                                    key={opt}
+                                    className={`filter-chip todo-only ${filters.todoOnly === opt ? 'active' : ''}`}
+                                    onClick={() => setTodoOnly(opt)}
+                                >
+                                    {opt}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

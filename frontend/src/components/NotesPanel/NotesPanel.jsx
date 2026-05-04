@@ -5,11 +5,11 @@ import { NotesContext } from '../../context/NotesContext'
 // component for notes panel
 function NotesPanel({ onEdit }) {
     
-    const { notes, pinNote, deleteNote } = useContext(NotesContext)
+    const { filteredNotes, pinNote, deleteNote } = useContext(NotesContext)
 
     // prioritize pinned notes over unpinned ones
-    const pinnedNotes = notes.filter(n => n.pinned)
-    const unpinnedNotes = notes.filter(n => !n.pinned)
+    const pinnedNotes = filteredNotes.filter(n => n.pinned)
+    const unpinnedNotes = filteredNotes.filter(n => !n.pinned)
     const sortedNotes = [...pinnedNotes, ...unpinnedNotes]
 
     return (
@@ -17,7 +17,7 @@ function NotesPanel({ onEdit }) {
             {/* HEADER - track the number of notes */}
             <div className="panel-header">
                 Your Notes
-                <span className="panel-count">{notes.length}</span>
+                <span className="panel-count">{filteredNotes.length}</span>
             </div>
 
             {/* BODY - show notes in a list with visible scroll bar on demand */}

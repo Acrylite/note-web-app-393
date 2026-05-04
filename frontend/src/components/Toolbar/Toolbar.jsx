@@ -1,22 +1,30 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import AddItem from '../AddItem/AddItem'
+import '../AddItem/AddItem.css'
 import FilterBar from '../FilterBar/FilterBar'
+import '../FilterBar/FilterBar.css'
 
-function Toolbar() {
+function Toolbar({ onAddNote }) {
     const [formOpen, setFormOpen] = useState(false)
-    const [defaultType, setDefaultType] = useState('note')
     const [filterOpen, setFilterOpen] = useState(false)
+    const filterRef = useRef(null)
 
-    const openForm = (type = 'note') => {
-        setDefaultType(type)
-        setFormOpen(true)
-    }
+    // close filter bar only when clicking outside the area
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (filterRef.current && !filterRef.current.contains(e.target)) {
+                setFilterOpen(false)
+            }
+        }
+        document.addEventListener('mousedown', handleClickOutside)
+        return () => document.removeEventListener('mousedown', handleClickOutside)
+    }, [])
 
     return (
-        <div className="toolbar-wrap">
+        <div className="toolbar-wrap" ref={filterRef}>
             {/* main toolbar */}
             <div className="toolbar">
-                <button className="add-btn" onClick={() => openForm('note')}>
+                <button className="add-btn" onClick={onAddNote}>
                     + Add Note
                 </button>
                 <input
@@ -24,7 +32,6 @@ function Toolbar() {
                     type="text"
                     placeholder="Search a note..."
                     onFocus={() => setFilterOpen(true)}
-                    onBlur={() => setTimeout(() => setFilterOpen(false), 150)}
                 />
             </div>
 
@@ -33,7 +40,7 @@ function Toolbar() {
 
             {/* add note form */}
             {formOpen && (
-                <AddItemForm
+                <AddItem
                     defaultType={defaultType}
                     onClose={() => setFormOpen(false)}
                 />

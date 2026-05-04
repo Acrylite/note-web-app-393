@@ -28,9 +28,10 @@ export function AuthProvider({ children }) {
 	const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light')
 
 	useEffect(() => {
+		// cover page refreshes
 		const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
 			if (firebaseUser) {
-				const idToken = await getToken()
+				const idToken = await getToken(true)
 				setUser(firebaseUser)
 				setToken(idToken)
 			} else {

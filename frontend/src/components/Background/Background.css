@@ -1,117 +1,136 @@
 .background {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  background: var(--bg-base);
-  transition: background 0.4s ease;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background: var(--bg-base);
+    transition: background 0.4s ease;
 }
 
 .bubble {
-  position: absolute;
-  border: 1.5px solid var(--bubble-stroke);
-  will-change: transform, border-radius;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
+    position: absolute;
+    border: 2.5px solid var(--bubble-stroke);
+    will-change: transform, border-radius;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
 }
 
 /* blob sizes and starting position */
 
 .bubble-1 {
-  width: 340px;
-  height: 340px;
-  top: 10%;
-  left: 8%;
-  animation:
-    morph1 14s infinite alternate,
-    drift1 18s infinite alternate;
+    width: 340px;
+    height: 340px;
+    top: 10%;
+    left: 8%;
+    animation:
+        morph1 14s infinite alternate,
+        drift1 18s infinite alternate;
 }
 
 .bubble-2 {
-  width: 240px;
-  height: 240px;
-  top: 55%;
-  left: 20%;
-  animation:
-    morph2 10s infinite alternate,
-    drift2 14s infinite alternate;
+    width: 240px;
+    height: 240px;
+    top: 55%;
+    left: 20%;
+    animation:
+        morph2 10s infinite alternate,
+        drift2 14s infinite alternate;
 }
 
 .bubble-3 {
-  width: 420px;
-  height: 420px;
-  top: -60px;
-  right: 10%;
-  animation:
-    morph3 16s infinite alternate,
-    drift3 20s infinite alternate;
+    width: 420px;
+    height: 420px;
+    top: -60px;
+    right: 10%;
+    animation:
+        morph3 16s infinite alternate,
+        drift3 20s infinite alternate;
 }
 
 .bubble-4 {
-  width: 180px;
-  height: 180px;
-  bottom: 8%;
-  right: 25%;
-  animation:
-    morph1 9s infinite alternate,
-    drift4 12s infinite alternate;
+    width: 180px;
+    height: 180px;
+    bottom: 8%;
+    right: 25%;
+    animation:
+        morph1 9s infinite alternate,
+        drift4 12s infinite alternate;
 }
 
 .bubble-5 {
-  width: 280px;
-  height: 280px;
-  bottom: 20%;
-  left: 50%;
-  animation:
-    morph2 12s infinite alternate,
-    drift5 16s infinite alternate;
+    width: 280px;
+    height: 280px;
+    bottom: 20%;
+    left: 50%;
+    animation:
+        morph2 12s infinite alternate,
+        drift5 16s infinite alternate;
 }
 
+.bubble-6 {
+    width: 200px;
+    height: 200px;
+    top: 30%;
+    left: 2%;
+    animation:
+        morph2 11s infinite alternate,
+        drift2 13s infinite alternate;
+}
+
+.bubble-7 {
+    width: 320px;
+    height: 320px;
+    top: 5%;
+    left: 35%;
+    animation:
+        morph3 17s infinite alternate,
+        drift5 19s infinite alternate;
+}
 /* blob morphing */
 /* these cycle through different organic blob shapes */
 
 @keyframes morph1 {
-  0%   { border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%; }
-  33%  { border-radius: 40% 60% 45% 55% / 55% 45% 60% 40%; }
-  66%  { border-radius: 55% 45% 60% 40% / 40% 60% 45% 55%; }
-  100% { border-radius: 45% 55% 40% 60% / 60% 40% 55% 45%; }
+    0%   { border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%; }
+    33%  { border-radius: 40% 60% 45% 55% / 55% 45% 60% 40%; }
+    66%  { border-radius: 55% 45% 60% 40% / 40% 60% 45% 55%; }
+    100% { border-radius: 45% 55% 40% 60% / 60% 40% 55% 45%; }
 }
 
 @keyframes morph2 {
-  0%   { border-radius: 70% 30% 50% 50% / 30% 70% 50% 50%; }
-  50%  { border-radius: 30% 70% 50% 50% / 70% 30% 50% 50%; }
-  100% { border-radius: 50% 50% 30% 70% / 50% 50% 70% 30%; }
+    0%   { border-radius: 70% 30% 50% 50% / 30% 70% 50% 50%; }
+    50%  { border-radius: 30% 70% 50% 50% / 70% 30% 50% 50%; }
+    100% { border-radius: 50% 50% 30% 70% / 50% 50% 70% 30%; }
 }
 
 @keyframes morph3 {
-  0%   { border-radius: 45% 55% 65% 35% / 55% 45% 35% 65%; }
-  40%  { border-radius: 65% 35% 45% 55% / 35% 65% 55% 45%; }
-  100% { border-radius: 35% 65% 55% 45% / 65% 35% 45% 55%; }
+    0%   { border-radius: 45% 55% 65% 35% / 55% 45% 35% 65%; }
+    40%  { border-radius: 65% 35% 45% 55% / 35% 65% 55% 45%; }
+    100% { border-radius: 35% 65% 55% 45% / 65% 35% 45% 55%; }
 }
 
 /* blob position drifting */
 
 @keyframes drift1 {
-  from { transform: translate(0px,   0px); }
-  to   { transform: translate(60px,  80px); }
+    from { transform: translate(0px,   0px); }
+    to   { transform: translate(60px,  80px); }
 }
 
 @keyframes drift2 {
-  from { transform: translate(0px,   0px); }
-  to   { transform: translate(-50px, -70px); }
+    from { transform: translate(0px,   0px); }
+    to   { transform: translate(-50px, -70px); }
 }
 
 @keyframes drift3 {
-  from { transform: translate(0px,  0px); }
-  to   { transform: translate(-80px, 60px); }
+    from { transform: translate(0px,  0px); }
+    to   { transform: translate(-80px, 60px); }
 }
 
 @keyframes drift4 {
-  from { transform: translate(0px,  0px); }
-  to   { transform: translate(40px, -50px); }
+    from { transform: translate(0px,  0px); }
+    to   { transform: translate(40px, -50px); }
 }
 
 @keyframes drift5 {
-  from { transform: translate(0px,  0px); }
-  to   { transform: translate(-60px, 40px); }
+    from { transform: translate(0px,  0px); }
+    to   { transform: translate(-60px, 40px); }
 }

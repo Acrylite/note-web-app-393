@@ -3,3 +3,7 @@
 
 # environmental variables
 .env
+.env.local
+
+# pycache
+__pycache__
